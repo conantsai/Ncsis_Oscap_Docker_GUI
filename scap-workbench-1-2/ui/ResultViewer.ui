@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ResultViewer</class>
+ <widget class="QWidget" name="ResultViewer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>392</width>
+    <height>31</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="buttonBox" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="saveButton">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Saves results of this evaluation. (Ctrl+S)</string>
+        </property>
+        <property name="text">
+         <string>Save Results</string>
+        </property>
+        <property name="shortcut">
+         <string>Ctrl+S</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="genRemediationButton">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Generate remediation role that contains fix for every rule that failed in the scan. However, note that not every rule implements a fix.</string>
+        </property>
+        <property name="text">
+         <string>Generate remediation role</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="openReportButton">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Opens the HTML report in the default browser of your desktop environment</string>
+        </property>
+        <property name="text">
+         <string>&amp;Show Report</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>openReportButton</zorder>
+     <zorder>genRemediationButton</zorder>
+     <zorder>saveButton</zorder>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

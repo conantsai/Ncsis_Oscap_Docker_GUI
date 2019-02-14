@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <?define VERSION="@SCAP_WORKBENCH_VERSION_MAJOR@.@SCAP_WORKBENCH_VERSION_MINOR@.@SCAP_WORKBENCH_VERSION_PATCH@.0" ?>
+    <Product Id="171211AD-F987-4051-BF5A-30A116CD6784" Name="SCAP Workbench" Language="1033" Version="$(var.VERSION)" Manufacturer="OpenSCAP" UpgradeCode="E3925738-54A3-402B-852D-866BEF6FC98C">
+        <Package Description="SCAP Workbench" Comments="SCAP Workbench" InstallerVersion="200" Compressed="yes" InstallPrivileges="elevated" InstallScope="perMachine" />
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Id="SCAP_WORKBENCH" Name="scap-workbench">
+
+                    <Component Id="ZLIB1.DLL" DiskId="1" Guid="652064BE-B750-41E5-8887-F50CFA324E2F">
+                        <File Id="ZLIB1.DLL" Name="zlib1.dll" Source="scap-workbench\zlib1.dll" />
+                    </Component>
+                    <Component Id="LIBXSLT_1.DLL" DiskId="1" Guid="8E3CA8D9-D5D6-42F5-B3A3-E31E8E8D57A5">
+                        <File Id="LIBXSLT_1.DLL" Name="libxslt-1.dll" Source="scap-workbench\libxslt-1.dll" />
+                    </Component>
+                    <Component Id="LIBXML2_2.DLL" DiskId="1" Guid="019B352E-B206-42AA-AEE1-4F0F82E42613">
+                        <File Id="LIBXML2_2.DLL" Name="libxml2-2.dll" Source="scap-workbench\libxml2-2.dll" />
+                    </Component>
+                    <Component Id="LIBWINPTHREAD_1.DLL" DiskId="1" Guid="30460775-C827-4C34-964D-14178BBA842B">
+                        <File Id="LIBWINPTHREAD_1.DLL" Name="libwinpthread-1.dll" Source="scap-workbench\libwinpthread-1.dll" />
+                    </Component>
+                    <Component Id="LIBSTDCpp_6.DLL" DiskId="1" Guid="1F9849B4-86D9-4A15-B2A6-842045405C9D">
+                        <File Id="LIBSTDCpp_6.DLL" Name="libstdc++-6.dll" Source="scap-workbench\libstdc++-6.dll" />
+                    </Component>
+                    <Component Id="LIBSSL_10.DLL" DiskId="1" Guid="41F981DC-C523-4915-B06C-BA3633F5E679">
+                        <File Id="LIBSSL_10.DLL" Name="libssl-10.dll" Source="scap-workbench\libssl-10.dll" />
+                    </Component>
+                    <Component Id="LIBSSH2_1.DLL" DiskId="1" Guid="723EA304-0F09-4959-9B0F-78FEAC231950">
+                        <File Id="LIBSSH2_1.DLL" Name="libssh2-1.dll" Source="scap-workbench\libssh2-1.dll" />
+                    </Component>
+                    <Component Id="LIBPNG16_16.DLL" DiskId="1" Guid="7A39BBC6-0F46-455E-92E8-8FB9673B3D0A">
+                        <File Id="LIBPNG16_16.DLL" Name="libpng16-16.dll" Source="scap-workbench\libpng16-16.dll" />
+                    </Component>
+                    <Component Id="LIBPCRE_1.DLL" DiskId="1" Guid="BD34FCBE-A7EA-43B0-8C05-25A6DB4343AC">
+                        <File Id="LIBPCRE_1.DLL" Name="libpcre-1.dll" Source="scap-workbench\libpcre-1.dll" />
+                    </Component>
+                    <Component Id="LIBOPENSCAP_8.DLL" DiskId="1" Guid="350E0C6E-AE46-4BF9-BDE3-D8ACD4204473">
+                        <File Id="LIBOPENSCAP_8.DLL" Name="libopenscap-8.dll" Source="scap-workbench\libopenscap-8.dll" />
+                    </Component>
+                    <Component Id="LIBINTL_8.DLL" DiskId="1" Guid="B3BFE1B2-A24C-4552-B39D-68C0AAA6D39D">
+                        <File Id="LIBINTL_8.DLL" Name="libintl-8.dll" Source="scap-workbench\libintl-8.dll" />
+                    </Component>
+                    <Component Id="LIBIDN_11.DLL" DiskId="1" Guid="027C84A1-4984-4BB7-9FE2-D9527D8EFB71">
+                        <File Id="LIBIDN_11.DLL" Name="libidn-11.dll" Source="scap-workbench\libidn-11.dll" />
+                    </Component>
+                    <Component Id="LIBGCC_S_SJLJ_1.DLL" DiskId="1" Guid="59D093A5-AF9B-4604-ABC6-25E46DEF115F">
+                        <File Id="LIBGCC_S_SJLJ_1.DLL" Name="libgcc_s_sjlj-1.dll" Source="scap-workbench\libgcc_s_sjlj-1.dll" />
+                    </Component>
+                    <Component Id="LIBEXSLT_0.DLL" DiskId="1" Guid="8B578F68-56AE-4F51-97A0-555DE58CFE78">
+                        <File Id="LIBEXSLT_0.DLL" Name="libexslt-0.dll" Source="scap-workbench\libexslt-0.dll" />
+                    </Component>
+                    <Component Id="LIBCURL_4.DLL" DiskId="1" Guid="D5E38777-6804-466E-A31A-45EE7BAE5AED">
+                        <File Id="LIBCURL_4.DLL" Name="libcurl-4.dll" Source="scap-workbench\libcurl-4.dll" />
+                    </Component>
+                    <Component Id="LIBCRYPTO_10.DLL" DiskId="1" Guid="C85F055A-FADD-4C5A-9147-9846593DE017">
+                        <File Id="LIBCRYPTO_10.DLL" Name="libcrypto-10.dll" Source="scap-workbench\libcrypto-10.dll" />
+                    </Component>
+                    <Component Id="ICONV.DLL" DiskId="1" Guid="CC2E29F0-A963-406E-BF7F-578C32B477A8">
+                        <File Id="ICONV.DLL" Name="iconv.dll" Source="scap-workbench\iconv.dll" />
+                    </Component>
+                    <Component Id="CYGZ.DLL" DiskId="1" Guid="2F368D50-8BD3-4603-BAB0-838DDDF31327">
+                        <File Id="CYGZ.DLL" Name="cygz.dll" Source="scap-workbench\cygz.dll" />
+                    </Component>
+                    <Component Id="CYGWIN1.DLL" DiskId="1" Guid="49C121E8-8E1E-46C5-9186-1704F83C02CF">
+                        <File Id="CYGWIN1.DLL" Name="cygwin1.dll" Source="scap-workbench\cygwin1.dll" />
+                    </Component>
+                    <Component Id="CYGSTDCpp_6.DLL" DiskId="1" Guid="AE3A42AD-8BBC-4119-97BE-FAD0D68EC8A6">
+                        <File Id="CYGSTDCpp_6.DLL" Name="cygstdc++-6.dll" Source="scap-workbench\cygstdc++-6.dll" />
+                    </Component>
+                    <Component Id="CYGSSP_0.DLL" DiskId="1" Guid="AA7A9677-EAF6-4B46-B948-B9E09531BFD8">
+                        <File Id="CYGSSP_0.DLL" Name="cygssp-0.dll" Source="scap-workbench\cygssp-0.dll" />
+                    </Component>
+                    <Component Id="CYGKRB5SUPPORT_0.DLL" DiskId="1" Guid="F3D669F0-EDD9-45DB-A1AA-29488B93046C">
+                        <File Id="CYGKRB5SUPPORT_0.DLL" Name="cygkrb5support-0.dll" Source="scap-workbench\cygkrb5support-0.dll" />
+                    </Component>
+                    <Component Id="CYGKRB5_3.DLL" DiskId="1" Guid="AC2C99D5-BCF9-4A7E-B5FB-55D4141FF29F">
+                        <File Id="CYGKRB5_3.DLL" Name="cygkrb5-3.dll" Source="scap-workbench\cygkrb5-3.dll" />
+                    </Component>
+                    <Component Id="CYGK5CRYPTO_3.DLL" DiskId="1" Guid="CB4BCF3E-E5A2-4E51-A3FA-8CBB36DC109D">
+                        <File Id="CYGK5CRYPTO_3.DLL" Name="cygk5crypto-3.dll" Source="scap-workbench\cygk5crypto-3.dll" />
+                    </Component>
+                    <Component Id="CYGINTL_8.DLL" DiskId="1" Guid="9613E0AE-5066-475A-A3E5-7EF4BF25FA64">
+                        <File Id="CYGINTL_8.DLL" Name="cygintl-8.dll" Source="scap-workbench\cygintl-8.dll" />
+                    </Component>
+                    <Component Id="CYGICONV_2.DLL" DiskId="1" Guid="092F51ED-1660-44E5-B303-40C77E3F5D5C">
+                        <File Id="CYGICONV_2.DLL" Name="cygiconv-2.dll" Source="scap-workbench\cygiconv-2.dll" />
+                    </Component>
+                    <Component Id="CYGGSSAPI_KRB5_2.DLL" DiskId="1" Guid="68564025-CF34-4512-863A-69BE5B77F40A">
+                        <File Id="CYGGSSAPI_KRB5_2.DLL" Name="cyggssapi_krb5-2.dll" Source="scap-workbench\cyggssapi_krb5-2.dll" />
+                    </Component>
+                    <Component Id="CYGGCC_S_1.DLL" DiskId="1" Guid="7ED2356F-07B3-4C3D-BF09-6203621025AB">
+                        <File Id="CYGGCC_S_1.DLL" Name="cyggcc_s-1.dll" Source="scap-workbench\cyggcc_s-1.dll" />
+                    </Component>
+                    <Component Id="CYGCRYPTO_1.0.0.DLL" DiskId="1" Guid="13B12963-6063-4DBA-8E51-00F520DF587F">
+                        <File Id="CYGCRYPTO_1.0.0.DLL" Name="cygcrypto-1.0.0.dll" Source="scap-workbench\cygcrypto-1.0.0.dll" />
+                    </Component>
+                    <Component Id="CYGCOM_ERR_2.DLL" DiskId="1" Guid="684BA420-52E4-49B3-8F37-7BAB2D692F0F">
+                        <File Id="CYGCOM_ERR_2.DLL" Name="cygcom_err-2.dll" Source="scap-workbench\cygcom_err-2.dll" />
+                    </Component>
+                    <Component Id="QTXMLPATTERNS4.DLL" DiskId="1" Guid="E7AA6886-5186-4DB4-9AAC-4399769D504E">
+                        <File Id="QTXMLPATTERNS4.DLL" Name="QtXmlPatterns4.dll" Source="scap-workbench\QtXmlPatterns4.dll" />
+                    </Component>
+                    <Component Id="QTNETWORK4.DLL" DiskId="1" Guid="B0F84519-3EAB-471E-9E05-752B51D58764">
+                        <File Id="QTNETWORK4.DLL" Name="QtNetwork4.dll" Source="scap-workbench\QtNetwork4.dll" />
+                    </Component>
+                    <Component Id="QTGUI4.DLL" DiskId="1" Guid="8009520D-A6FC-445D-ACD9-02068C008692">
+                        <File Id="QTGUI4.DLL" Name="QtGui4.dll" Source="scap-workbench\QtGui4.dll" />
+                    </Component>
+                    <Component Id="QTCORE4.DLL" DiskId="1" Guid="E51B710C-46E5-4838-859F-BE8FD3850A65">
+                        <File Id="QTCORE4.DLL" Name="QtCore4.dll" Source="scap-workbench\QtCore4.dll" />
+                    </Component>
+
+                    <Component Id="SCAP_WORKBENCH.EXE" DiskId="1" Guid="628FE581-5590-43BF-B8E6-46B3FB4AD6B2">
+                        <File Id="SCAP_WORKBENCH.EXE" Name="scap-workbench.exe" Source="scap-workbench\scap-workbench.exe" Vital="yes" KeyPath="yes">
+                            <Shortcut Id="desktopShortcut" Directory="DesktopFolder" Name="SCAP Workbench" WorkingDirectory="INSTALLDIR" Advertise="yes" Icon="DesktopIcon.exe" IconIndex="0" />
+                            <Shortcut Id="ExeShortcut" Directory="ProgramMenuDir" Name="SCAP Workbench" Advertise="yes" Icon="StartMenuIcon.exe" IconIndex="0" />
+                        </File>
+                    </Component>
+
+                    <Component Id="WIN_SSH_ASKPASS.EXE" DiskId="1" Guid="DA9753EC-B748-4A0D-8076-F2E4E494493B">
+                        <File Id="WIN_SSH_ASKPASS.EXE" Name="win-ssh-askpass.exe" Source="scap-workbench\win-ssh-askpass.exe" />
+                    </Component>
+                    <Component Id="SSH.EXE" DiskId="1" Guid="B1584987-C302-4A63-898E-CF7A63BBDEEA">
+                        <File Id="SSH.EXE" Name="ssh.exe" Source="scap-workbench\ssh.exe" />
+                    </Component>
+
+                    <Directory Id="DOC" Name="doc">
+                        <Component Id="USER_MANUAL.ADOC" DiskId="1" Guid="440B6D2F-DD47-47A5-A365-826EAD094DA7">
+                            <File Id="USER_MANUAL.ADOC" Name="user_manual.adoc" Source="scap-workbench\doc\user_manual.adoc" />
+                        </Component>
+                        <Component Id="USER_MANUAL.HTML" DiskId="1" Guid="8E8F44D5-459C-431D-8569-7088094E66C7">
+                            <File Id="USER_MANUAL.HTML" Name="user_manual.html" Source="scap-workbench\doc\user_manual.html" />
+                        </Component>
+                        <Directory Id="USER_MANUAL" Name="user_manual">
+                            <Component Id="CUSTOMIZING_SSG_PROFILE.PNG" DiskId="1" Guid="34D7FCB3-2A60-457E-A96B-4C5071C361F2">
+                                <File Id="CUSTOMIZING_SSG_PROFILE.PNG" Name="customizing_ssg_profile.png" Source="scap-workbench\doc\user_manual\customizing_ssg_profile.png" />
+                            </Component>
+                            <Component Id="DEFAULT_CONTENT_OPENED.PNG" DiskId="1" Guid="8720E5AB-CD5D-43C3-8248-B2A438862653">
+                                <File Id="DEFAULT_CONTENT_OPENED.PNG" Name="default_content_opened.png" Source="scap-workbench\doc\user_manual\default_content_opened.png" />
+                            </Component>
+                            <Component Id="INTRO_SCREENSHOT.PNG" DiskId="1" Guid="D73F334F-EEC2-4C30-A440-7EDFC26D8897">
+                                <File Id="INTRO_SCREENSHOT.PNG" Name="intro_screenshot.png" Source="scap-workbench\doc\user_manual\intro_screenshot.png" />
+                            </Component>
+                            <Component Id="LOGO.PNG" DiskId="1" Guid="DE026BBD-9241-4004-A2EC-7A9F459C8049">
+                                <File Id="LOGO.PNG" Name="logo.png" Source="scap-workbench\doc\user_manual\logo.png" />
+                            </Component>
+                            <Component Id="OPENING_TAILORING_FILE.PNG" DiskId="1" Guid="EFB14DFD-697F-4314-8476-E798EA1A1E93">
+                                <File Id="OPENING_TAILORING_FILE.PNG" Name="opening_tailoring_file.png" Source="scap-workbench\doc\user_manual\opening_tailoring_file.png" />
+                            </Component>
+                            <Component Id="SAVE_AS_RPM_DIALOG.PNG" DiskId="1" Guid="097D0EE8-3296-4E50-A359-406468E10C94">
+                                <File Id="SAVE_AS_RPM_DIALOG.PNG" Name="save_as_rpm_dialog.png" Source="scap-workbench\doc\user_manual\save_as_rpm_dialog.png" />
+                            </Component>
+                            <Component Id="SCANNING_REMOTE_MACHINE.PNG" DiskId="1" Guid="1B44A6EF-56CA-4FCC-9B62-D4EC0ED04D2D">
+                                <File Id="SCANNING_REMOTE_MACHINE.PNG" Name="scanning_remote_machine.png" Source="scap-workbench\doc\user_manual\scanning_remote_machine.png" />
+                            </Component>
+                            <Component Id="SSG_INTEGRATION.PNG" DiskId="1" Guid="5304CEF5-0BA8-4D6A-B608-D25C66835A64">
+                                <File Id="SSG_INTEGRATION.PNG" Name="ssg_integration.png" Source="scap-workbench\doc\user_manual\ssg_integration.png" />
+                            </Component>
+                            <Component Id="STARTING_SCAP_WORKBENCH.PNG" DiskId="1" Guid="A674206D-4F49-430C-BCBA-403511DF15BC">
+                                <File Id="STARTING_SCAP_WORKBENCH.PNG" Name="starting_scap_workbench.png" Source="scap-workbench\doc\user_manual\starting_scap_workbench.png" />
+                            </Component>
+                            <Component Id="TAILORING_DIALOG_OPENED.PNG" DiskId="1" Guid="64E6128B-01D2-45A0-B37F-E1256235B41F">
+                                <File Id="TAILORING_DIALOG_OPENED.PNG" Name="tailoring_dialog_opened.png" Source="scap-workbench\doc\user_manual\tailoring_dialog_opened.png" />
+                            </Component>
+                            <Component Id="TAILORING_SET_VALUE.PNG" DiskId="1" Guid="F0BA7277-A7F1-4F39-B752-308393C6C666">
+                                <File Id="TAILORING_SET_VALUE.PNG" Name="tailoring_set_value.png" Source="scap-workbench\doc\user_manual\tailoring_set_value.png" />
+                            </Component>
+                            <Component Id="TAILORING_UNDO_HISTORY.PNG" DiskId="1" Guid="26ED3654-2A0C-4696-99F7-514BCB2176DF">
+                                <File Id="TAILORING_UNDO_HISTORY.PNG" Name="tailoring_undo_history.png" Source="scap-workbench\doc\user_manual\tailoring_undo_history.png" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                    <Directory Id="SHARE" Name="share">
+                        <Directory Id="PIXMAPS" Name="pixmaps">
+                            <Component Id="SCAP_WORKBENCH.PNG" DiskId="1" Guid="1F161BFF-2DD5-4A62-ADDA-E567407B73C6">
+                                <File Id="SCAP_WORKBENCH.PNG" Name="scap-workbench.png" Source="scap-workbench\share\pixmaps\scap-workbench.png" />
+                            </Component>
+                            <Component Id="SCAP_WORKBENCH.SVG" DiskId="1" Guid="0BC0CC6B-8DF2-4E57-8538-A028F3029FF4">
+                                <File Id="SCAP_WORKBENCH.SVG" Name="scap-workbench.svg" Source="scap-workbench\share\pixmaps\scap-workbench.svg" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="SCAP_WORKBENCH_1" Name="scap-workbench">
+                            <Component Id="BENCHMARK.PNG" DiskId="1" Guid="554EBA39-B880-4C6A-B57D-68FFF5FB176F">
+                                <File Id="BENCHMARK.PNG" Name="benchmark.png" Source="scap-workbench\share\scap-workbench\benchmark.png" />
+                            </Component>
+                            <Component Id="COLLAPSED_ARROW.PNG" DiskId="1" Guid="EFA7D21E-701F-4BF3-9904-94C0CA0FDC15">
+                                <File Id="COLLAPSED_ARROW.PNG" Name="collapsed-arrow.png" Source="scap-workbench\share\scap-workbench\collapsed-arrow.png" />
+                            </Component>
+                            <Component Id="EDIT_REDO.PNG" DiskId="1" Guid="371536FB-AEF8-4EFA-9575-0890DB512871">
+                                <File Id="EDIT_REDO.PNG" Name="edit-redo.png" Source="scap-workbench\share\scap-workbench\edit-redo.png" />
+                            </Component>
+                            <Component Id="EDIT_UNDO.PNG" DiskId="1" Guid="C7F704DD-975B-4568-8EDE-B7A9D4F99256">
+                                <File Id="EDIT_UNDO.PNG" Name="edit-undo.png" Source="scap-workbench\share\scap-workbench\edit-undo.png" />
+                            </Component>
+                            <Component Id="EXPANDED_ARROW.PNG" DiskId="1" Guid="2875B2A0-464F-496D-B2EA-0D161E674A24">
+                                <File Id="EXPANDED_ARROW.PNG" Name="expanded-arrow.png" Source="scap-workbench\share\scap-workbench\expanded-arrow.png" />
+                            </Component>
+                            <Component Id="GROUP.PNG" DiskId="1" Guid="2198D141-8582-4648-96DD-C95F700EE6F6">
+                                <File Id="GROUP.PNG" Name="group.png" Source="scap-workbench\share\scap-workbench\group.png" />
+                            </Component>
+                            <Component Id="PROFILE.PNG" DiskId="1" Guid="124726B3-B406-4B3D-8A66-2E254D996042">
+                                <File Id="PROFILE.PNG" Name="profile.png" Source="scap-workbench\share\scap-workbench\profile.png" />
+                            </Component>
+                            <Component Id="RULE.PNG" DiskId="1" Guid="E91FB84B-0D92-4EBE-98AE-48E6107E1061">
+                                <File Id="RULE.PNG" Name="rule.png" Source="scap-workbench\share\scap-workbench\rule.png" />
+                            </Component>
+                            <Component Id="SSG_LOGO.PNG" DiskId="1" Guid="CAF4B7B9-5CDF-4ED0-A21B-2ACB287C7E1A">
+                                <File Id="SSG_LOGO.PNG" Name="ssg_logo.png" Source="scap-workbench\share\scap-workbench\ssg_logo.png" />
+                            </Component>
+                            <Component Id="VALUE.PNG" DiskId="1" Guid="34D95AD7-4B48-4DEB-AB47-8DBF09BC4872">
+                                <File Id="VALUE.PNG" Name="value.png" Source="scap-workbench\share\scap-workbench\value.png" />
+                            </Component>
+                            <!--<Directory Id="TRANSLATIONS" Name="translations">
+                                <Component Id="README" DiskId="1" Guid="8B846AB1-D52F-43DB-8A0B-B90C988B65C2">
+                                    <File Id="README" Name="README" Source="scap-workbench\share\scap-workbench\translations\README" />
+                                </Component>
+                            </Directory>-->
+                        </Directory>
+                    </Directory>
+                    <Directory Id="SSG" Name="ssg">
+
+                        <Component Id="SSG_RHEL_OSP7_DS.XML" DiskId="1" Guid="5B45C299-A7F7-4D76-BBC8-BFACCD271F97">
+                            <File Id="SSG_RHEL_OSP7_DS.XML" Name="ssg-rhel-osp7-ds.xml" Source="scap-workbench\ssg\ssg-rhel-osp7-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_SL7_DS.XML" DiskId="1" Guid="6257DE09-DC80-4EB7-B128-E12551F1C0D8">
+                            <File Id="SSG_SL7_DS.XML" Name="ssg-sl7-ds.xml" Source="scap-workbench\ssg\ssg-sl7-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_RHEL7_DS.XML" DiskId="1" Guid="7C4B8B7F-5777-401A-819C-4A2CF5700098">
+                            <File Id="SSG_RHEL7_DS.XML" Name="ssg-rhel7-ds.xml" Source="scap-workbench\ssg\ssg-rhel7-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_CENTOS7_DS.XML" DiskId="1" Guid="987340EB-E3EA-486A-96A4-B47D3AC3C8C7">
+                            <File Id="SSG_CENTOS7_DS.XML" Name="ssg-centos7-ds.xml" Source="scap-workbench\ssg\ssg-centos7-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_SL6_DS.XML" DiskId="1" Guid="4957DC1A-2CEC-44AB-9A16-9AC29195D93D">
+                            <File Id="SSG_SL6_DS.XML" Name="ssg-sl6-ds.xml" Source="scap-workbench\ssg\ssg-sl6-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_RHEL6_DS.XML" DiskId="1" Guid="683CC5DF-BD70-4492-A583-EE225C4FFB9C">
+                            <File Id="SSG_RHEL6_DS.XML" Name="ssg-rhel6-ds.xml" Source="scap-workbench\ssg\ssg-rhel6-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_CENTOS6_DS.XML" DiskId="1" Guid="8B41A781-2ACC-4193-A051-CD1F72F08207">
+                            <File Id="SSG_CENTOS6_DS.XML" Name="ssg-centos6-ds.xml" Source="scap-workbench\ssg\ssg-centos6-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_DEBIAN8_DS.XML" DiskId="1" Guid="209D7F17-BE76-4238-B883-0F888C2AB592">
+                            <File Id="SSG_DEBIAN8_DS.XML" Name="ssg-debian8-ds.xml" Source="scap-workbench\ssg\ssg-debian8-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_JRE_DS.XML" DiskId="1" Guid="5D784932-0011-4744-9B80-02553A36957D">
+                            <File Id="SSG_JRE_DS.XML" Name="ssg-jre-ds.xml" Source="scap-workbench\ssg\ssg-jre-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_CHROMIUM_DS.XML" DiskId="1" Guid="DAD6D671-D71A-4B80-9FCE-EBD17B44B67A">
+                            <File Id="SSG_CHROMIUM_DS.XML" Name="ssg-chromium-ds.xml" Source="scap-workbench\ssg\ssg-chromium-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_FIREFOX_DS.XML" DiskId="1" Guid="FE11A1AB-C4EF-431C-97F4-A0F950787858">
+                            <File Id="SSG_FIREFOX_DS.XML" Name="ssg-firefox-ds.xml" Source="scap-workbench\ssg\ssg-firefox-ds.xml" />
+                        </Component>
+                        <Component Id="SSG_FEDORA_DS.XML" DiskId="1" Guid="19E45FA0-B20E-490C-8144-6B30C5A3A504">
+                            <File Id="SSG_FEDORA_DS.XML" Name="ssg-fedora-ds.xml" Source="scap-workbench\ssg\ssg-fedora-ds.xml" />
+                        </Component>
+                        <Component Id="LICENSE" DiskId="1" Guid="4164ECD3-14DB-4872-BCDE-4E9869D88F6C">
+                            <File Id="LICENSE" Name="LICENSE" Source="scap-workbench\ssg\LICENSE" />
+                        </Component>
+                        <Component Id="CONTRIBUTORS.MD" DiskId="1" Guid="C8903255-1A59-4FF6-B560-ACFEDEB3B0AB">
+                            <File Id="CONTRIBUTORS.MD" Name="Contributors.md" Source="scap-workbench\ssg\Contributors.md" />
+                        </Component>
+                        <Component Id="README.MD" DiskId="1" Guid="BDB658A3-F885-42F2-BAED-2D10DA086869">
+                            <File Id="README.MD" Name="README.md" Source="scap-workbench\ssg\README.md" />
+                        </Component>
+
+                        <Directory Id="KICKSTART" Name="kickstart">
+                            <Component Id="SSG_RHEL7_PCI_DSS_SERVER_WITH_GUI_OAA_KS.CFG" DiskId="1" Guid="0C506A43-6B72-4DFF-A848-26397F25F20D">
+                                <File Id="SSG_RHEL7_PCI_DSS_SERVER_WITH_GUI_OAA_KS.CFG" Name="ssg-rhel7-pci-dss-server-with-gui-oaa-ks.cfg" Source="scap-workbench\ssg\kickstart\ssg-rhel7-pci-dss-server-with-gui-oaa-ks.cfg" />
+                            </Component>
+                            <Component Id="SSG_RHEL7_OSPP_KS.CFG" DiskId="1" Guid="8BBDDE5A-05B4-415C-A58B-3B55D33AE80B">
+                                <File Id="SSG_RHEL7_OSPP_KS.CFG" Name="ssg-rhel7-ospp-ks.cfg" Source="scap-workbench\ssg\kickstart\ssg-rhel7-ospp-ks.cfg" />
+                            </Component>
+                            <Component Id="SSG_RHEL6_USGCB_SERVER_WITH_GUI_KS.CFG" DiskId="1" Guid="B75CE22A-BBE8-4136-9BF1-53C7F6655306">
+                                <File Id="SSG_RHEL6_USGCB_SERVER_WITH_GUI_KS.CFG" Name="ssg-rhel6-usgcb-server-with-gui-ks.cfg" Source="scap-workbench\ssg\kickstart\ssg-rhel6-usgcb-server-with-gui-ks.cfg" />
+                            </Component>
+                            <Component Id="SSG_RHEL6_STIG_KS.CFG" DiskId="1" Guid="E3CED24B-EBD0-479D-900F-FBF44B9527B9">
+                                <File Id="SSG_RHEL6_STIG_KS.CFG" Name="ssg-rhel6-stig-ks.cfg" Source="scap-workbench\ssg\kickstart\ssg-rhel6-stig-ks.cfg" />
+                            </Component>
+                            <Component Id="SSG_RHEL6_PCI_DSS_WITH_GUI_KS.CFG" DiskId="1" Guid="AFC941E1-D181-476E-A32C-ADDCCD9016B2">
+                                <File Id="SSG_RHEL6_PCI_DSS_WITH_GUI_KS.CFG" Name="ssg-rhel6-pci-dss-with-gui-ks.cfg" Source="scap-workbench\ssg\kickstart\ssg-rhel6-pci-dss-with-gui-ks.cfg" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="DesktopFolder" />
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ProgramMenuDir" Name="scap-workbench" />
+                    <Component Id="StartMenuShortcuts" Guid="4E5A445A-89F2-4415-A56A-64A604DB7256">
+                        <RemoveFolder Id="RemoveProgramMenuDir" Directory="ProgramMenuDir" On="uninstall" />
+                        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" />
+                        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Name="version" Type="string" Value="$(var.VERSION)" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="DefaultFeature" Title="SCAP Workbench" Level="1">
+            <ComponentRef Id="ZLIB1.DLL" />
+            <ComponentRef Id="LIBXSLT_1.DLL" />
+            <ComponentRef Id="LIBXML2_2.DLL" />
+            <ComponentRef Id="LIBWINPTHREAD_1.DLL" />
+            <ComponentRef Id="LIBSTDCpp_6.DLL" />
+            <ComponentRef Id="LIBSSL_10.DLL" />
+            <ComponentRef Id="LIBSSH2_1.DLL" />
+            <ComponentRef Id="LIBPNG16_16.DLL" />
+            <ComponentRef Id="LIBPCRE_1.DLL" />
+            <ComponentRef Id="LIBOPENSCAP_8.DLL" />
+            <ComponentRef Id="LIBINTL_8.DLL" />
+            <ComponentRef Id="LIBIDN_11.DLL" />
+            <ComponentRef Id="LIBGCC_S_SJLJ_1.DLL" />
+            <ComponentRef Id="LIBEXSLT_0.DLL" />
+            <ComponentRef Id="LIBCURL_4.DLL" />
+            <ComponentRef Id="LIBCRYPTO_10.DLL" />
+            <ComponentRef Id="ICONV.DLL" />
+            <ComponentRef Id="CYGZ.DLL" />
+            <ComponentRef Id="CYGWIN1.DLL" />
+            <ComponentRef Id="CYGSTDCpp_6.DLL" />
+            <ComponentRef Id="CYGSSP_0.DLL" />
+            <ComponentRef Id="CYGKRB5SUPPORT_0.DLL" />
+            <ComponentRef Id="CYGKRB5_3.DLL" />
+            <ComponentRef Id="CYGK5CRYPTO_3.DLL" />
+            <ComponentRef Id="CYGINTL_8.DLL" />
+            <ComponentRef Id="CYGICONV_2.DLL" />
+            <ComponentRef Id="CYGGSSAPI_KRB5_2.DLL" />
+            <ComponentRef Id="CYGGCC_S_1.DLL" />
+            <ComponentRef Id="CYGCRYPTO_1.0.0.DLL" />
+            <ComponentRef Id="CYGCOM_ERR_2.DLL" />
+            <ComponentRef Id="QTXMLPATTERNS4.DLL" />
+            <ComponentRef Id="QTNETWORK4.DLL" />
+            <ComponentRef Id="QTGUI4.DLL" />
+            <ComponentRef Id="QTCORE4.DLL" />
+
+            <ComponentRef Id="WIN_SSH_ASKPASS.EXE" />
+            <ComponentRef Id="SSH.EXE" />
+
+            <ComponentRef Id="SCAP_WORKBENCH.EXE" />
+            <ComponentRef Id="USER_MANUAL.ADOC" />
+            <ComponentRef Id="USER_MANUAL.HTML" />
+            <ComponentRef Id="CUSTOMIZING_SSG_PROFILE.PNG" />
+            <ComponentRef Id="DEFAULT_CONTENT_OPENED.PNG" />
+            <ComponentRef Id="INTRO_SCREENSHOT.PNG" />
+            <ComponentRef Id="LOGO.PNG" />
+            <ComponentRef Id="OPENING_TAILORING_FILE.PNG" />
+            <ComponentRef Id="SAVE_AS_RPM_DIALOG.PNG" />
+            <ComponentRef Id="SCANNING_REMOTE_MACHINE.PNG" />
+            <ComponentRef Id="SSG_INTEGRATION.PNG" />
+            <ComponentRef Id="STARTING_SCAP_WORKBENCH.PNG" />
+            <ComponentRef Id="TAILORING_DIALOG_OPENED.PNG" />
+            <ComponentRef Id="TAILORING_SET_VALUE.PNG" />
+            <ComponentRef Id="TAILORING_UNDO_HISTORY.PNG" />
+            <ComponentRef Id="SCAP_WORKBENCH.PNG" />
+            <ComponentRef Id="SCAP_WORKBENCH.SVG" />
+            <ComponentRef Id="BENCHMARK.PNG" />
+            <ComponentRef Id="COLLAPSED_ARROW.PNG" />
+            <ComponentRef Id="EDIT_REDO.PNG" />
+            <ComponentRef Id="EDIT_UNDO.PNG" />
+            <ComponentRef Id="EXPANDED_ARROW.PNG" />
+            <ComponentRef Id="GROUP.PNG" />
+            <ComponentRef Id="PROFILE.PNG" />
+            <ComponentRef Id="RULE.PNG" />
+            <ComponentRef Id="SSG_LOGO.PNG" />
+            <ComponentRef Id="VALUE.PNG" />
+            <!--<ComponentRef Id="README" />-->
+
+            <ComponentRef Id="SSG_RHEL7_PCI_DSS_SERVER_WITH_GUI_OAA_KS.CFG" />
+            <ComponentRef Id="SSG_RHEL7_OSPP_KS.CFG" />
+            <ComponentRef Id="SSG_RHEL6_USGCB_SERVER_WITH_GUI_KS.CFG" />
+            <ComponentRef Id="SSG_RHEL6_STIG_KS.CFG" />
+            <ComponentRef Id="SSG_RHEL6_PCI_DSS_WITH_GUI_KS.CFG" />
+
+            <ComponentRef Id="SSG_RHEL_OSP7_DS.XML" />
+            <ComponentRef Id="SSG_SL7_DS.XML" />
+            <ComponentRef Id="SSG_RHEL7_DS.XML" />
+            <ComponentRef Id="SSG_CENTOS7_DS.XML" />
+            <ComponentRef Id="SSG_SL6_DS.XML" />
+            <ComponentRef Id="SSG_RHEL6_DS.XML" />
+            <ComponentRef Id="SSG_CENTOS6_DS.XML" />
+            <ComponentRef Id="SSG_DEBIAN8_DS.XML" />
+            <ComponentRef Id="SSG_JRE_DS.XML" />
+            <ComponentRef Id="SSG_CHROMIUM_DS.XML" />
+            <ComponentRef Id="SSG_FIREFOX_DS.XML" />
+            <ComponentRef Id="SSG_FEDORA_DS.XML" />
+            <ComponentRef Id="LICENSE" />
+            <ComponentRef Id="CONTRIBUTORS.MD" />
+            <ComponentRef Id="README.MD" />
+
+            <ComponentRef Id="StartMenuShortcuts" />
+        </Feature>
+        <UI />
+        <UIRef Id="WixUI_Minimal" />
+        <Icon Id="DesktopIcon.exe" SourceFile="scap-workbench\scap-workbench.exe" />
+        <Icon Id="StartMenuIcon.exe" SourceFile="scap-workbench\scap-workbench.exe" />
+        <Icon Id="AppIcon.ico" SourceFile="scap-workbench\AppIcon.ico" />
+        <Property Id="ARPPRODUCTICON" Value="AppIcon.ico" />
+        <WixVariable Id="WixUILicenseRtf" Value="win32-LICENSE.rtf" />
+        <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+        <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+    </Product>
+</Wix>
