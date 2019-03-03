@@ -43,9 +43,15 @@
 #include <QFileSystemWatcher>
 #include <QDesktopWidget>
 #include <QMenu>
+#include <QInputDialog>
+#include <QTextStream>
 
 #include <cassert>
 #include <set>
+
+//#include "CreateProfile.h"
+//#include "CreateRule.h"
+//#include "CreateOval.h"
 
 extern "C" {
 #include <xccdf_policy.h>
@@ -71,6 +77,9 @@ MainWindow::MainWindow(QWidget* parent):
     QMainWindow(parent),
 
     mQSettings(new QSettings(this)),
+    mCreateProfile(0),
+    mCreateRule(0),
+    mCreateOval(0),
 
     mDiagnosticsDialog(0),
     mCommandLineArgsDialog(0),
@@ -146,6 +155,38 @@ MainWindow::MainWindow(QWidget* parent):
         mUI.profileComboBox, SIGNAL(currentIndexChanged(int)),
         this, SLOT(profileComboboxChanged(int))
     );
+
+    //createprofile
+
+        mCreateProfile = new CreateProfile(this);
+        mCreateProfile->hide();
+        globalCreateProfile = mCreateProfile;
+
+        QObject::connect(
+            mUI.actionCreate_Profile_2, SIGNAL(triggered()),
+            mCreateProfile, SLOT(show())/*SLOT(createprofile())*/
+        );
+
+        //createrule
+
+        mCreateRule = new CreateRule(this);
+        mCreateRule->hide();
+        globalCreateRule = mCreateRule;
+        QObject::connect(
+            mUI.actionCreate_Rule_2, SIGNAL(triggered()),
+            mCreateRule, SLOT(show())
+        );
+
+        //createoval
+
+        mCreateOval = new CreateOval(this);
+        mCreateOval->hide();
+        globalCreateOval = mCreateOval;
+        QObject::connect(
+            mUI.actionCreate_Oval_2, SIGNAL(triggered()),
+            mCreateOval, SLOT(show())
+        );
+
 #ifndef SCAP_WORKBENCH_LOCAL_SCAN_ENABLED
     mUI.localMachineRadioButton->setEnabled(false);
     mUI.localMachineRadioButton->setToolTip(
@@ -301,6 +342,8 @@ MainWindow::MainWindow(QWidget* parent):
 MainWindow::~MainWindow()
 {
     globalDiagnosticsDialog = NULL;
+    globalCreateProfile = NULL;
+    globalCreateRule = NULL;
 
     delete mScanner;
     mScanner = 0;
@@ -358,6 +401,7 @@ void MainWindow::clearResults()
 
     mUI.menuSave->setEnabled(true);
     mUI.actionOpen->setEnabled(true);
+    mUI.actionCreate_Profile->setEnabled(true);
 }
 
 void MainWindow::openFile(const QString& path, bool reload)
@@ -1682,4 +1726,335 @@ void MainWindow::containerscanQt()
 {
     containerscan = new DockerContainerScan;
     containerscan->show();
+}
+
+//createprofile function
+void MainWindow::createprofile(){
+    QString profilename = "";
+    QString profiletitle = "";
+    QString profiledescription="";
+    QString selectidref = "";
+    QString selectselected = "";
+//    bool ok;
+/*
+    QString text = QInputDialog::getText(this,tr("CreateProfile"),tr("Enter profile name/id"),QLineEdit::Normal,profilename,&ok);
+    if (ok && !text.isEmpty()){
+       profilename  = text;
+    }
+
+    text = QInputDialog::getText(this,tr("CreateProfile"),tr("Enter profile title"),QLineEdit::Normal,profiletitle,&ok);
+    if (ok && !text.isEmpty()){
+        profiletitle = text;
+    }
+
+    text = QInputDialog::getText(this,tr("CreateProfile"),tr("Enter profile description"),QLineEdit::Normal,profiledescription,&ok);
+    if (ok && !text.isEmpty()){
+        profiledescription = text;
+    }
+
+    text = QInputDialog::getText(this,tr("CreateProfile"),tr("Enter select idref"),QLineEdit::Normal,selectidref,&ok);
+    if (ok && !text.isEmpty()){
+        selectidref = text;
+    }
+
+    text = QInputDialog::getText(this,tr("CreateProfile"),tr("Enter select selectselected"),QLineEdit::Normal,selectselected,&ok);
+    if (ok && !text.isEmpty()){
+        selectselected = text;
+    }
+
+    const QString path = "/root/scap-security-guide/rhel7/profiles/"+profilename+".xml";
+    QFile file(path);
+    file.open(QIODevice::ReadWrite);
+    QString datastr = "<Profile id=\"" + profilename+ "\">\n"+
+        "<title>"+profiletitle+"</title>\n"+
+        "<description>"+profiledescription+"</description>\n\n"+
+        "<select idref=\""+selectidref+"\" selected=\""+selectselected+"\" />\n\n"+
+        "</Profile>";
+    const char* data = datastr.toLatin1().data();
+    file.write(data);
+    file.close();
+    const QString path2 = "/root/scap-security-guide/rhel7/guide.xslt";
+    const QString path3 = "/root/scap-security-guide/rhel7/guide1.xslt";
+    QFile file3(path3);
+    file3.open(QIODevice::WriteOnly);
+    QFile file2(path2);
+    file2.open(QIODevice::ReadWrite);
+    datastr = "";
+    QString temp = "";
+    QString cmp = "      <!-- Adding profiles here -->\n";
+    while(!file2.atEnd()) {
+        temp = file2.readLine();
+        file3.write(temp.toLatin1().data());
+        if(!cmp.compare(temp)){
+              QString tp = "      <xsl:apply-templates select=\"document(\'profiles/"+profilename+".xml\')\" />\n";
+              const char* data2 = tp.toLatin1().data();
+              file3.write(data2);
+        }
+    }
+
+    file2.close();
+    file3.close();
+    QProcess::execute("/root/scap-security-guide/rhel7/changeguide.sh");
+*/
+    QMessageBox::information(NULL,tr("CreateProfile"),tr("Create Success!"));
+}
+
+//createrule function
+void MainWindow::createrule(){
+    QString group1id = "";
+    QString group1title = "";
+    QString group1description="";
+    QString group2id = "";
+    QString group2title = "";
+    QString group2description="";
+    QString ruleid = "";
+    QString ruleseverity = "";
+    QString ruletitle = "";
+    QString ruledescription="";
+    QString ruleovalid = "";
+//    bool ok;
+    /*
+    QString text = QInputDialog::getText(this,tr("Createrule"),tr("Enter group name/id"),QLineEdit::Normal,group1id,&ok);
+    if (ok && !text.isEmpty()){
+        group1id = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter group title"),QLineEdit::Normal,group1title,&ok);
+    if (ok && !text.isEmpty()){
+        group1title = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter group description"),QLineEdit::Normal,group1description,&ok);
+    if (ok && !text.isEmpty()){
+        group1description = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter group id"),QLineEdit::Normal,group2id,&ok);
+    if (ok && !text.isEmpty()){
+        group2id = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter group title"),QLineEdit::Normal,group2title,&ok);
+    if (ok && !text.isEmpty()){
+        group2title = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter group description"),QLineEdit::Normal,group2description,&ok);
+    if (ok && !text.isEmpty()){
+        group2description = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter rule id"),QLineEdit::Normal,ruleid,&ok);
+    if (ok && !text.isEmpty()){
+       ruleid  = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter rule id"),QLineEdit::Normal,ruleseverity,&ok);
+    if (ok && !text.isEmpty()){
+       ruleseverity = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter rule title"),QLineEdit::Normal,ruletitle,&ok);
+    if (ok && !text.isEmpty()){
+        ruletitle = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter rule description"),QLineEdit::Normal,ruledescription,&ok);
+    if (ok && !text.isEmpty()){
+        ruledescription = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createrule"),tr("Enter oval id"),QLineEdit::Normal,ruleovalid,&ok);
+    if (ok && !text.isEmpty()){
+        ruleovalid = text;
+    }
+
+    const QString path = "/root/scap-security-guide/shared/xccdf/ncsist/"+group1id+".xml";
+    QFile file(path);
+    file.open(QIODevice::WriteOnly);
+    QString datastr = "<Group id=\""+group1id+"\">\n"+
+                      "<title>"+group1title+"</title>\n"+
+                      "<description>"+group1description+"</description>\n\n"+
+                      "<Group id=\""+group2id+"\">\n"+
+                      "<title>"+group2title+"</title>\n"+
+                      "<description>"+group2description+"</description>\n\n"+
+                      "<Rule id=\""+ruleid+"\" severity=\""+ruleseverity+"\" prodtype=\"rhel7\">\n"+
+                      "<title>"+ruletitle+"</title>\n"+
+                      "<description>"+ruledescription+"</description>\n\n"+
+                      "<ocil>TBD.</ocil>\n"+
+                      "<rationale>TBD.</rationale>\n"+
+                      "<ident prodtype=\"rhel7\" cce=\"TBD\" />\n"+
+                      "<oval id=\""+ruleovalid+"\" />\n"+
+                      "<ref nist=\"TBD\" disa=\"TBD\" srg=\"TBD\" />\n"+
+                      "</Rule>\n\n"+
+                      "</Group>\n</Group>";
+
+    const char* data = datastr.toLatin1().data();
+    file.write(data);
+    file.close();
+
+    const QString path2 = "/root/scap-security-guide/shared/xccdf/shared_guide.xslt";
+    const QString path3 = "/root/scap-security-guide/shared/xccdf/shared_guide1.xslt";
+    QFile file3(path3);
+    file3.open(QIODevice::WriteOnly);
+    QFile file2(path2);
+    file2.open(QIODevice::ReadWrite);
+    datastr = "";
+    QString temp = "";
+    QString cmp = "  <xsl:template match=\"Group[@id='ncsist']\">\n";
+    while(!file2.atEnd()) {
+        temp = file2.readLine();
+        file3.write(temp.toLatin1().data());
+        if(!cmp.compare(temp)){
+              break;
+        }
+    }
+    cmp = "      <xsl:copy-of select=\"@*|node()\" />\n";
+    while(!file2.atEnd()) {
+        temp = file2.readLine();
+        file3.write(temp.toLatin1().data());
+        if(!cmp.compare(temp)){
+              QString tp = "      <xsl:apply-templates select=\"document(concat($SHARED_RP, \'/xccdf/ncsist/"+group1id+".xml\'))\" />\n";
+              const char* data2 = tp.toLatin1().data();
+              file3.write(data2);
+        }
+    }
+    file2.close();
+    file3.close();
+    QProcess::execute("/root/scap-security-guide/shared/xccdf/changeguide.sh");
+    */
+    QMessageBox::information(NULL,tr("Createrule"),tr("Create Success!"));
+}
+
+//createoval function
+void MainWindow::createoval(){
+    QString oval_id = "";
+    QString oval_title = "";
+    QString oval_description="";
+    QString oval_comment="";
+    QString oval_filepath = "";
+    QString oval_filename = "";
+//    bool ok;
+    /*
+    QString text = QInputDialog::getText(this,tr("Createoval"),tr("Enter oval name/id"),QLineEdit::Normal,oval_id,&ok);
+    if (ok && !text.isEmpty()){
+        oval_id = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createoval"),tr("Enter oval title"),QLineEdit::Normal,oval_title,&ok);
+    if (ok && !text.isEmpty()){
+        oval_title = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createoval"),tr("Enter oval description"),QLineEdit::Normal,oval_description,&ok);
+    if (ok && !text.isEmpty()){
+        oval_description = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createoval"),tr("Enter oval comment"),QLineEdit::Normal,oval_comment,&ok);
+    if (ok && !text.isEmpty()){
+        oval_comment = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createoval"),tr("Enter oval filepath"),QLineEdit::Normal,oval_filepath,&ok);
+    if (ok && !text.isEmpty()){
+        oval_filepath = text;
+    }
+
+    text = QInputDialog::getText(this,tr("Createoval"),tr("Enter oval filename"),QLineEdit::Normal,oval_filename,&ok);
+    if (ok && !text.isEmpty()){
+        oval_filename = text;
+    }
+
+    const QString path = "/root/scap-security-guide/rhel7/checks/oval/"+oval_id+".xml";
+    QFile file(path);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+
+
+    QTextStream out(&file);
+    QString datastr = QString("<def-group>\n");
+    const char* data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    <definition class=\"compliance\" id=\"") + oval_id + QString("\" version=\"1\">\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        <metadata>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("            <title>") + oval_title + QString("</title>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("            <affected family=\"unix\">\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("                <platform>Red Hat Enterprise Linux 7</platform>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("            </affected>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("            <description>") + oval_description + QString("</description>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        </metadata>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        <criteria>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("            <criterion comment=\"") + oval_comment + QString("\" test_ref=\"test_") + oval_id + QString("\" />\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        </criteria>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    </definition>\n\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    <unix:file_test check=\"all\"\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    check_existence=\"all_exist\"\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    comment=\"") + oval_comment + QString("\"\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    id=\"test_") + oval_id + QString("\" version=\"1\">\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        <unix:object object_ref=\"obj_") + oval_id + QString("\" />\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        <unix:state state_ref=\"state_") + oval_id + QString("\" />\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    </unix:file_test>\n\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    <unix:file_object id=\"obj_") + oval_id + QString("\" version=\"1\">\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        <unix:filepath>") + oval_filepath + QString("</unix:filepath>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    </unix:file_object>\n\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    <unix:file_state id=\"state_") + oval_id + QString("\" version=\"1\">\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("        <unix:filename>") + oval_filename + QString("</unix:filename>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("    </unix:file_state>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+    datastr = QString("</def-group>\n");
+    data = datastr.toLatin1().data();
+    file.write(data);
+
+    file.close();
+    */
+    QMessageBox::information(NULL,tr("Createoval"),tr("Create Success!"));
 }

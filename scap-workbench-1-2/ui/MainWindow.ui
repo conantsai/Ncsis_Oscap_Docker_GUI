@@ -617,8 +617,17 @@
     <addaction name="actionDocker_Image_Scan"/>
     <addaction name="actionDocker_Container_Scan"/>
    </widget>
+   <widget class="QMenu" name="menuCreate">
+    <property name="title">
+     <string>Create</string>
+    </property>
+    <addaction name="actionCreate_Profile_2"/>
+    <addaction name="actionCreate_Rule_2"/>
+    <addaction name="actionCreate_Oval_2"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuCreate"/>
    <addaction name="menuDocker_Scan"/>
   </widget>
   <action name="actionOpen">
@@ -701,6 +710,36 @@
   <action name="actionDocker_Container_Scan">
    <property name="text">
     <string>Docker_Container_Scan</string>
+   </property>
+  </action>
+  <action name="actionCreate_Profile">
+   <property name="text">
+    <string>Create Profile</string>
+   </property>
+  </action>
+  <action name="actionCreate_Rule">
+   <property name="text">
+    <string>Create Rule</string>
+   </property>
+  </action>
+  <action name="actionCreate_Oval">
+   <property name="text">
+    <string>Create Oval</string>
+   </property>
+  </action>
+  <action name="actionCreate_Profile_2">
+   <property name="text">
+    <string>Create Profile</string>
+   </property>
+  </action>
+  <action name="actionCreate_Rule_2">
+   <property name="text">
+    <string>Create Rule</string>
+   </property>
+  </action>
+  <action name="actionCreate_Oval_2">
+   <property name="text">
+    <string>Create Oval</string>
    </property>
   </action>
  </widget>

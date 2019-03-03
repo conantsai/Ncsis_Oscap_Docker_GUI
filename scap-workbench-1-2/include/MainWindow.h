@@ -34,6 +34,7 @@
 #include <DockerImageScan.h>
 #include <DockerContainerScan.h>
 
+
 extern "C"
 {
 #include <xccdf_benchmark.h>
@@ -217,6 +218,17 @@ class MainWindow : public QMainWindow
 
         /// QSettings for scap-workbench
         QSettings* mQSettings;
+
+
+        /// Qt CreateProfile
+        CreateProfile* mCreateProfile;
+
+
+        /// Qt CreateRule
+        CreateRule* mCreateRule;
+
+        /// Qt CreateOval
+        CreateOval* mCreateOval;
 
         /// Qt Dialog that displays messages (errors, warnings, info)
         /// Gets shown whenever a warning or error is emitted
@@ -471,9 +483,25 @@ class MainWindow : public QMainWindow
         DockerImageScan *imagescan;
         DockerContainerScan *containerscan;
 
+
     private slots:
         void imagescanQt();
         void containerscanQt();
+
+        /**
+        *          * createprofile function()
+        *                   */
+        void createprofile();
+
+        /**
+        *          * createrule function()
+        *                   */
+        void createrule();
+
+        /**
+        *          * createoval function()
+        *                   */
+        void createoval();
 };
 
 #endif

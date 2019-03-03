@@ -140,7 +140,7 @@ void DockerContainerScan::on_pushButton_cscan_clicked()
         // exception
         if(str_result == "")
         {
-            QLabel* wordlabel = new QLabel(QString::fromStdString("Error, Please Check Whether the Image ID Is Correct OR This Image Is Not Based On RHEL."));
+            QLabel* wordlabel = new QLabel(QString::fromStdString("Error, Please Check Whether the Container ID Is Correct OR This Container Is Not Based On RHEL."));
             wordlabel->resize(ui->scrollArea_cresult->width(),ui->scrollArea_cresult->height());
             ui->scrollArea_cresult->setWidget(wordlabel);
         }
@@ -207,7 +207,7 @@ void DockerContainerScan::on_pushButton_cscan_clicked()
         // exception
         if(str_result == "")
         {
-            QLabel* wordlabel = new QLabel(QString::fromStdString("Error, Please Check whether the Image ID is Correct OR Select Other SSG/Profile."));
+            QLabel* wordlabel = new QLabel(QString::fromStdString("Error, Please Check whether the Container ID is Correct OR Select Other SSG/Profile."));
             wordlabel->resize(ui->scrollArea_cresult->width(),ui->scrollArea_cresult->height());
             ui->scrollArea_cresult->setWidget(wordlabel);
         }
@@ -273,7 +273,7 @@ void DockerContainerScan::on_pushButton_cscan_clicked()
         // exception
         if(str_result == "")
         {
-            QLabel* wordlabel = new QLabel(QString::fromStdString("Error, Please Check whether the Image ID is Correct OR Select Other SSG/Profile."));
+            QLabel* wordlabel = new QLabel(QString::fromStdString("Error, Please Check whether the Container ID is Correct OR Select Other SSG/Profile."));
             wordlabel->resize(ui->scrollArea_cresult->width(),ui->scrollArea_cresult->height());
             ui->scrollArea_cresult->setWidget(wordlabel);
         }
