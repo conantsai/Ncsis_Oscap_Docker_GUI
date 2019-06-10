@@ -28,7 +28,9 @@ sudo systemctl status docker
 ### 使用python2並安裝atomic
 + 安裝pip
 ``` bash
+sudo yum -y install epel-release
 sudo yum -y install python-pip
+sudo pip install --upgrade pip
 ```
 + Pip docker package
 ``` bash
