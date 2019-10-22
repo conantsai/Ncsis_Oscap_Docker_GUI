@@ -34,6 +34,9 @@
 #include <DockerImageScan.h>
 #include <DockerContainerScan.h>
 
+#include <CreateOval.h>
+#include <CreateProfile.h>
+#include <CreateRule.h>
 
 extern "C"
 {

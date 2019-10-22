@@ -92,11 +92,11 @@ void DockerContainerScan::on_pushButton_cscan_clicked()
 
     if (cstr_method == "CVE")
     {
-        string report_name = cstr_id + "_" + time + "-cve-report.html";
-        string cve_rootcmd = "oscap-docker container-cve " + cstr_id + " --results " + cstr_id + "_" + time + "-cve-results.xml" +
-                " --report " + cstr_id + "_" + time + "-cve-report.html";
-        string cve_usercmd = "sudo oscap-docker container-cve " + cstr_id + " --results " + cstr_id + "_" + time + "-cve-results.xml" +
-                " --report " + cstr_id + "_" + time + "-cve-report.html";
+        string report_name = "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-cve-report.html";
+        string cve_rootcmd = "oscap-docker container-cve " + cstr_id + " --results " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-cve-results.xml" +
+                " --report " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-cve-report.html";
+        string cve_usercmd = "sudo oscap-docker container-cve " + cstr_id + " --results " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-cve-results.xml" +
+                " --report " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-cve-report.html";
 
         const char *cve_cmdchr;
 
@@ -158,12 +158,12 @@ void DockerContainerScan::on_pushButton_cscan_clicked()
     else if (cstr_method == "OVAL")
     {
 
-        string report_name = cstr_id + "_" + time + "-oval-report.html";
+        string report_name = "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-oval-report.html";
         string ssg_name = " /usr/share/xml/scap/ssg/content/" + cstr_ssg + ".xml";
-        string oval_rootcmd = "oscap-docker container " + cstr_id + " oval eval" + " --results " + cstr_id + "_" + time + "-oval-results.xml" +
-                " --report " + report_name + ssg_name;
-        string oval_usercmd = "sudo oscap-docker container " + cstr_id + " oval eval" + " --results " + cstr_id + "_" + time + "-oval-results.xml" +
-                " --report " + report_name + ssg_name;
+        string oval_rootcmd = "oscap-docker container " + cstr_id + " oval eval" + " --results " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-oval-results.xml" +
+                " --report " + "/root/OSCAP-Docker/" + report_name + ssg_name;
+        string oval_usercmd = "sudo oscap-docker container " + cstr_id + " oval eval" + " --results " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-oval-results.xml" +
+                " --report " + "/root/OSCAP-Docker/" + report_name + ssg_name;
 
         const char *oval_cmdchr;
 
@@ -223,13 +223,13 @@ void DockerContainerScan::on_pushButton_cscan_clicked()
     }
     else if (cstr_method == "XCCDF")
     {
-        string report_name = cstr_id + "_" + time + "-xccdf-report.html";
+        string report_name = "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-xccdf-report.html";
         string ssg_name = " /usr/share/xml/scap/ssg/content/" + cstr_ssg + ".xml";
         string profile_name = cstr_profile;
-        string xccdf_rootcmd = "oscap-docker container " + cstr_id + " xccdf eval" + " --profile " + profile_name + " --results " + cstr_id + "_" + time + "-xccdf-results.xml" +
-                " --report " + cstr_id + "_" + time + "-xccdf-report.html" +  ssg_name;
-        string xccdf_usercmd = "sudo oscap-docker container " + cstr_id + " xccdf eval" + " --profile " + profile_name + " --results " + cstr_id + "_" + time + "-xccdf-results.xml" +
-                " --report " + cstr_id + "_" + time + "-xccdf-report.html" +  ssg_name;
+        string xccdf_rootcmd = "oscap-docker container " + cstr_id + " xccdf eval" + " --profile " + profile_name + " --results " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-xccdf-results.xml" +
+                " --report " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-xccdf-report.html" +  ssg_name;
+        string xccdf_usercmd = "sudo oscap-docker container " + cstr_id + " xccdf eval" + " --profile " + profile_name + " --results " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-xccdf-results.xml" +
+                " --report " + "/root/OSCAP-Docker/" + cstr_id + "_" + time + "-xccdf-report.html" +  ssg_name;
 
         const char *xccdf_cmdchr;
 
@@ -542,5 +542,4 @@ void DockerContainerScan::on_comboBox_cssg_currentIndexChanged()
             break;
     }
 }
-
 
